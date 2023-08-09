@@ -147,6 +147,9 @@ const qrCodeScanner = function ( apex, $, Html5Qrcode, Html5QrcodeSupportedForma
                         pConfig.facingMode = pFacingMode;
                         html5QrCode.stop();
                         startScanner();
+                    },
+                    init: function() {
+                        init();
                     }
                 }
             );
@@ -164,7 +167,9 @@ const qrCodeScanner = function ( apex, $, Html5Qrcode, Html5QrcodeSupportedForma
                 apex.region( pConfig.regionID ).refresh();
             } );
 
-            init();
+            region$.on( "init", function () {
+                apex.region( pConfig.regionID ).init();
+            } );
         }
     };
 };
