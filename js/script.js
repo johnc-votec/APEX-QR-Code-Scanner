@@ -50,7 +50,7 @@ const qrCodeScanner = function ( apex, $, Html5Qrcode, Html5QrcodeSupportedForma
                 container$ = $( "<div>" );
                 container$.addClass( "qr-code-scanner-container" );
                 container$.css( "height", pConfig.height + "px" );
-                container$.css( "width", pConfig.height * ratio + "px" );
+                container$.css( "width", "100%" );
                 container$.css( "margin", "0 auto" );
                 container$.attr( "id", containerID );
                 region$.append( container$ );
