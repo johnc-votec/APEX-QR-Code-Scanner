@@ -45,7 +45,7 @@ const qrCodeScanner = function ( apex, $, Html5Qrcode, Html5QrcodeSupportedForma
                 html5QrCode.start( { facingMode: pConfig.facingMode }, qrConfig, qrCodeSuccessCallback );
             }
 
-            function init() {
+            function init(mediaStream) {
                 const containerID = pConfig.regionID + "_scanner";
                 container$ = $( "<div>" );
                 container$.addClass( "qr-code-scanner-container" );
@@ -65,7 +65,7 @@ const qrCodeScanner = function ( apex, $, Html5Qrcode, Html5QrcodeSupportedForma
                     return Number( str );
                 } );
 
-                html5QrCode = new Html5Qrcode( containerID, { formatsToSupport: formats, aspectRatio: ratio } );
+                html5QrCode = new Html5Qrcode( containerID, { formatsToSupport: formats, aspectRatio: ratio }, mediaStream );
                 startScanner();
             }
                   
@@ -148,8 +148,8 @@ const qrCodeScanner = function ( apex, $, Html5Qrcode, Html5QrcodeSupportedForma
                         html5QrCode.stop();
                         startScanner();
                     },
-                    init: function() {
-                        init();
+                    init: function(mediaStream) {
+                        init(mediaStream);
                     }
                 }
             );
